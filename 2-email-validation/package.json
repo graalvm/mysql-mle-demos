@@ -1,0 +1,15 @@
+{
+  "name": "validator-demo",
+  "version": "0.1.0",
+  "description": "",
+  "main": "echo \"Error: no main specified\" && exit 1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UPL",
+  "dependencies": {
+    "validator": "^9.4.0",
+    "@types/validator": "^9.4.0"
+  }
+}
