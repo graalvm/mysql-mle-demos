@@ -22,13 +22,13 @@ select email, levenshtein_js("announce@lists.mysql.com", email) as distance from
 The first JS query finishes in a few seconds with:
 ```
 mysql> select email, levensthein_js("announce@lists.mysql.com", email) as distance from emails order by distance limit 3;
-+-----------------------+----------+
-| email                 | distance |
-+-----------------------+----------+
-| Brannon33@hotmail.com |       13 |
-| Antone_Koss@gmail.com |       13 |
-| Finn88@hotmail.com    |       14 |
-+-----------------------+----------+
++-----------------------------+----------+
+| email                       | distance |
++-----------------------------+----------+
+| cluster@lists.mysql.com     |        7 |
+| replication@lists.mysql.com |       11 |
+| Brannon33@hotmail.com       |       13 |
++-----------------------------+----------+
 3 rows in set (1.98 sec)
 ```
 The second one returns the same results and finishes about `50%` faster in `1.39 sec`. This is due the the JIT compilation of JavaScript code that was completed during the first execution. Every next run will run at full speed.
