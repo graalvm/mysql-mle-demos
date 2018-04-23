@@ -11,6 +11,7 @@ function wordCount(xs) {
     return rv;
   }, {});
 };
+
 function tokenFrequency() {
   const connection = mysql.createConnection({
      host     : 'localhost',
@@ -21,7 +22,7 @@ function tokenFrequency() {
   });
   connection.connect();
   var tokenizer = new tokenize.WordTokenizer();
-  var query = connection.query('SELECT email from emails;', function (error, results, fields) {
+  var query = connection.query('SELECT text from tweets;', function (error, results, fields) {
     if (error) throw error;
     var count = wordCount(results.map(r => r.email)
       .reduce((acc, x) => acc.concat(tokenizer.tokenize(x)), []));
