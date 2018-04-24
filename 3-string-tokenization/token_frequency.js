@@ -27,7 +27,7 @@ function tokenFrequency() {
     var count = wordCount(results.map(r => r.email)
       .reduce((acc, x) => acc.concat(tokenizer.tokenize(x)), []));
 
-    // count token frequency
+    // count token counts
     for (var token in count) {
       connection.query('INSERT into token_frequency SET ?', {"token": token, "frequency": groupped[token]}, function (error, results, fields) {
         if (error) throw error;
