@@ -6,8 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "UPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vjovanov/mysql-mle-demos"
+  },
+  "author": "Vojin Jovanovic",
+  "contributors": [
+    "Vojin Jovanovic <vojin.jovanovic@oracle.com>"
+  ],
+  "license": "MIT",
   "dependencies": {
     "validator": "^9.4.0",
     "@types/validator": "^9.4.0"
