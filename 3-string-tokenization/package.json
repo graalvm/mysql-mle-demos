@@ -6,14 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "UPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vjovanov/mysql-mle-demos"
+  },
+  "author": "Vojin Jovanovic",
+  "contributors": [
+    "Vojin Jovanovic <vojin.jovanovic@oracle.com>"
+  ],
+  "license": "MIT",
   "dependencies": {
-    "mysql": "git@github.com:vjovanov/mysql.git",
-    "mysql2": "git@github.com:vjovanov/node-mysql2.git",
-    "mle": "git@github.com:vjovanov/mle.git",
-    "natural": "0.5.6",
-    "sqlstring": "^2.3.1",
-    "wordnet-db": "^3.1.6"
+   "mysql": "git@github.com:vjovanov/mysql.git",
+   "mysql2": "git@github.com:vjovanov/node-mysql2.git",
+   "mle": "git@github.com:vjovanov/mle.git",
+   "natural": "0.5.6"
   }
 }

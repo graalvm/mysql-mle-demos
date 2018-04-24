@@ -10,12 +10,12 @@ npm install
 
 Then to execute the tokenization and frequency on the client execute:
 ```
-node token_count.js
+nodejs token_count.js
 ```
 
 To deploy the same function to the database:
 ```
-dbjs deploy  -c "localhost/test?port=3306" --database=mysql -u root --browserify-ignore-missing --password= --browserify-ignore-missing --browserify-ignore ./node_modules/cls-bluebird/lib/index.js --browserify-ignore ./node_modules/iconv-lite/lib/index.js token_count.js
+dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --browserify-ignore-missing --password= --browserify-ignore-missing --browserify-ignore ./node_modules/cls-bluebird/lib/index.js --browserify-ignore ./node_modules/iconv-lite/lib/index.js token_count.js
 ```
 
 In the client simply invoke:
