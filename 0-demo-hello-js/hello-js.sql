@@ -1,8 +1,9 @@
 DELIMITER $$
-CREATE FUNCTION hello_world_js() RETURNS VARCHAR(255) LANGUAGE JS function() {
+CREATE FUNCTION hello_js_world() RETURNS VARCHAR(255) LANGUAGE JS function() {
   return "Hello, JS World!";
 }$$
-
 DELIMITER ;
 
-SELECT hello_world_js() as Greeting;
+select ROUTINE_NAME, EXTERNAL_LANGUAGE from information_schema.routines where ROUTINE_SCHEMA="demo";
+
+SELECT hello_js_world() as Greeting;
