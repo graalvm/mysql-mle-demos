@@ -1,7 +1,7 @@
-# Demos for the MySQL Multi-Lingual Engine
+# Demos for the MySQL Multi-Lingual Environment
 
-Before you start with the demos open the MySQL client and create all the tables
-with seed data:
-```
-mysql < seed-data/emails.sql
-```
+Individual demos are in individual folders of this repo.
+
+## Setup
+
+We are still waiting for last approvals to release on MySQL Labs--stay tuned.
