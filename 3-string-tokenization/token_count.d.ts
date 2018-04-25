@@ -1,1 +1,1 @@
-export function tokenCount(limit: number);
+export function token_count(limit: number);
