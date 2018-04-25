@@ -11,7 +11,7 @@ dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --password= 
 
 Now we can find valid emails in the MySQL client:
 ```
-select email from emails where VALIDATOR_ISEMAIL(email) = 1;
+select email from emails where validator_isEmail(email) = 1;
 ```
 
 Again, the first execution of the query takes around `1.5 sec` while the next executions take about `0.5 sec` as the JavaScript code has been Just-in-Time (JIT) compiled.

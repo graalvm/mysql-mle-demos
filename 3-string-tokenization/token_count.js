@@ -6,17 +6,20 @@ function tokenCount(limit) {
   const connection = getConnection();
   connection.connect();
 
+  console.log("Fetching tweets...");
   var tokenizer = new tokenize.WordTokenizer();
   var query = connection.query('SELECT text from tweets;', function (err, res, flds) {
     if (err) throw err;
+    console.log("Counting Tokens...");
     var count = wordCount(res.map(r => tokenizer.tokenize(r.text)));
     var orderedCount = orderKeys(count);       
+    
+    console.log("Inserting...");
     orderedCount.slice(0, limit).forEach(function(token) {
-      connection.query(
-        'INSERT into token_count SET ?',
-        {"token": token.token, "count": token.count}
-      );
+      connection.query('INSERT into token_count SET ?', token);
     });
+
+    console.log("Done.");
     connection.end();
   });
 }
