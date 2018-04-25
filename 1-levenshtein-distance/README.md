@@ -21,7 +21,7 @@ select email, levenshtein_js("announce@lists.mysql.com", email) as distance from
 
 The first JS query finishes in a few seconds with:
 ```
-mysql> select email, levensthein_js("announce@lists.mysql.com", email) as distance from emails order by distance limit 3;
+mysql> select email, levenshtein_js("announce@lists.mysql.com", email) as distance from emails order by distance limit 3;
 +-----------------------------+----------+
 | email                       | distance |
 +-----------------------------+----------+
