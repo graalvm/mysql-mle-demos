@@ -12,8 +12,8 @@ function tokenCount(limit) {
     if (err) throw err;
     console.log("Counting Tokens...");
     var count = wordCount(res.map(r => tokenizer.tokenize(r.text)));
-    var orderedCount = orderKeys(count);       
-    
+    var orderedCount = orderKeys(count);
+
     console.log("Inserting...");
     orderedCount.slice(0, limit).forEach(function(token) {
       connection.query('INSERT into token_count SET ?', token);
@@ -27,10 +27,10 @@ function tokenCount(limit) {
 function wordCount(xs) {
   var rv = new Object();
   xs.forEach(function(tokens) {
-  	tokens.forEach(function(token) {  	  
+  	tokens.forEach(function(token) {
       if (token in rv) rv[token] += 1;
       else rv[token] = 1;
-    });   
+    });
   });
   return rv;
 }
@@ -38,7 +38,7 @@ function wordCount(xs) {
 function orderKeys(object) {
   return Object.keys(object)
     .sort((a, b) => object[b] - object[a])
-    .map(key => ({token: key, count: object[key]}));      
+    .map(key => ({token: key, count: object[key]}));
 }
 
 function getConnection() {
@@ -53,4 +53,4 @@ function getConnection() {
 if (!mle.enabled()) {
   tokenCount(100);
 }
-module.exports.tokenCount = tokenCount;
+module.exports.token_count = tokenCount;
