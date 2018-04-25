@@ -1,4 +1,6 @@
 create table emails(email varchar(256));
+insert into emails(email) values ("replication@lists.mysql.com");
+insert into emails(email) values ("cluster@lists.mysql.com");
 insert into emails(email) values ("Maggio.Marques");
 insert into emails(email) values ("Bayer.Jayne");
 insert into emails(email) values ("Leuschke.Pauline");
@@ -4995,7 +4997,5 @@ insert into emails(email) values ("Janis17@yahoo.com");
 insert into emails(email) values ("Estelle_Kub@gmail.com");
 insert into emails(email) values ("Maxine.OKon@gmail.com");
 insert into emails(email) values ("Mitchel_Zieme@yahoo.com");
-insert into emails(email) values ("replication@lists.mysql.com");
-insert into emails(email) values ("cluster@lists.mysql.com");
 insert into emails(email) values ("Briana.Schaden@yahoo.com");
 insert into emails(email) values ("Reginald.Greenholt@hotmail.com");

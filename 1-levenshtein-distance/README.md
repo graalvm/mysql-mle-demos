@@ -11,7 +11,7 @@ select email, levenshtein("announce@lists.mysql.com", email) as distance from em
 ```
 While this query runs we have time to take a beverage, come back, and do the same with JS:
 ```
-source 1-levenshtein-distance/levenshtein-js.sql;
+source 1-levenshtein-distance/levenshtein_js.sql;
 select email, levenshtein_js("announce@lists.mysql.com", email) as distance from emails order by distance limit 3;
 ```
 This one completes in a couple of seconds. Now we can run the JS query again:
