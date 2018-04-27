@@ -1,0 +1,10 @@
+drop function if exists hello_js_world;
+drop function if exists LEVENSHTEIN;
+drop function if exists levenshtein_js;
+drop function if exists $LIB$validator;
+drop function if exists VALIDATOR_ISEMAIL;
+drop function if exists hello_js;
+drop function if exists hello_python;
+drop function if exists hello_ruby;
+drop table if exists token_count;
+create table token_count(token varchar(255), count varchar(255));
