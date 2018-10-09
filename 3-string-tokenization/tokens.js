@@ -10,7 +10,7 @@ function tokenCount(limit) {
   var tokenizer = new tokenize.WordTokenizer();
   var query = connection.query('SELECT text from tweets;', function (err, res, flds) {
     if (err) throw err;
-    console.log("Counting Tokens...");
+    console.log("Counting tokens...");
     var count = wordCount(res.map(r => tokenizer.tokenize(r.text)));
     var orderedCount = orderKeys(count);
 

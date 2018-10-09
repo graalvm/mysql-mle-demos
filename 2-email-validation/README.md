@@ -6,7 +6,7 @@ npm install
 ```
 Then we use the `dbjs` tool to make stored functions from the functions in the module:
 ```
-dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --password= validator.ts
+dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --password= validator
 ```
 
 Now we can find valid emails in the MySQL client:

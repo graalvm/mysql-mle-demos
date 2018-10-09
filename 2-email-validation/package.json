@@ -16,7 +16,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "validator": "^9.4.0",
-    "@types/validator": "^9.4.0"
+    "@types/node": "10.9.2",
+    "@types/validator": "9.4.1",
+    "validator": "9.4.1"
   }
 }

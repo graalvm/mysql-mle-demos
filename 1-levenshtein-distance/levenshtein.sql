@@ -31,5 +31,6 @@ BEGIN
     END IF;
     RETURN c;
 END$$
-
 DELIMITER ;
+
+SELECT email, levenshtein("announce@lists.mysql.com", email) AS distance FROM emails ORDER BY distance LIMIT 3;

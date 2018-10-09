@@ -7,4 +7,5 @@ drop function if exists hello_js;
 drop function if exists hello_python;
 drop function if exists hello_ruby;
 drop table if exists token_count;
+drop table if exists emails;
 create table token_count(token varchar(255), count varchar(255));

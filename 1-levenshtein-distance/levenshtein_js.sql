@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE FUNCTION LEVENSHTEIN_JS(source VARCHAR(255), target VARCHAR(255)) RETURNS int(11) LANGUAGE JS
+CREATE FUNCTION LEVENSHTEIN_JS(source VARCHAR(255), target VARCHAR(255)) RETURNS int(11) LANGUAGE JS [[
 function(source, target) {
     var realCost;
 
@@ -35,6 +35,7 @@ function(source, target) {
     }
 
     return resultMatrix[sourceLength][targetLength];
-}
+}]]
 $$
 DELIMITER ;
+SELECT email, levenshtein_js("announce@lists.mysql.com", email) AS distance FROM emails ORDER BY distance LIMIT 3;

@@ -20,5 +20,8 @@
     "mysql2": "git@github.com:vjovanov/node-mysql2.git",
     "mle": "git@github.com:vjovanov/mle.git",
     "natural": "0.5.6"
+  },
+  "devDependencies": {
+    "ignore-loader": "^0.1.2"
   }
 }
