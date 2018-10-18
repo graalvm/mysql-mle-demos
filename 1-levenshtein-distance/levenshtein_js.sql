@@ -1,3 +1,4 @@
+-- Source: http://geekyogi.tumblr.com/post/70420850373/javascript-algorithms-levenshteins-distance
 DELIMITER $$
 CREATE FUNCTION LEVENSHTEIN_JS(source VARCHAR(255), target VARCHAR(255)) RETURNS int(11) LANGUAGE JS [[
 function (source, target) {

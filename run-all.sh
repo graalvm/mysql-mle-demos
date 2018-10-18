@@ -28,6 +28,7 @@ $MYSQL < $ROOT_DIR/1-levenshtein-distance/levenshtein_js.sql
 
 # Demo 2
 cd $ROOT_DIR/2-email-validation/
+npm install
 $DBJS deploy -c "localhost/demo?port=3306" --database=mysql -u root --password= validator
 echo "select email from emails where validator_isemail(email) = 1;" | $MYSQL
 cd $ROOT_DIR
@@ -37,6 +38,7 @@ $MYSQL < $ROOT_DIR/seed-data/tweets.sql
 $MYSQL < $ROOT_DIR/seed-data/tokens.sql
 
 cd $ROOT_DIR/3-string-tokenization/
+npm install
 $DBJS deploy  -c "localhost/demo?port=3306" --database=mysql -u root --password=  --webpackConfig webpack.config.js tokens.js
 echo "call tokens_token_count(100);" | $MYSQL
 cd $ROOT_DIR
