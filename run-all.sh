@@ -29,7 +29,7 @@ $MYSQL < $ROOT_DIR/1-levenshtein-distance/levenshtein_js.sql
 # Demo 2
 cd $ROOT_DIR/2-email-validation/
 npm install
-$DBJS deploy -c "localhost/demo?port=3306" --database=mysql -u root --password= validator
+$DBJS deploy -c "localhost/demo?port=3306" --database=mysql -u root --password= validator.ts
 echo "select email from emails where validator_isemail(email) = 1;" | $MYSQL
 cd $ROOT_DIR
 
