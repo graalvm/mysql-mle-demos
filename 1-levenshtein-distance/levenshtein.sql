@@ -1,6 +1,7 @@
 -- Source: https://openquery.com.au/blog/levenshtein-mysql-stored-function
+USE demo;
+DROP FUNCTION IF EXISTS levenshtein;
 DELIMITER $$
-DROP FUNCTION IF EXISTS levenshtein $$
 CREATE FUNCTION levenshtein(s1 VARCHAR(255) CHARACTER SET utf8, s2 VARCHAR(255) CHARACTER SET utf8)
   RETURNS INT
   DETERMINISTIC

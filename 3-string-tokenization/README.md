@@ -20,7 +20,7 @@ dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --password= 
 
 In the client simply invoke:
 ```
-call TOKENS_TOKEN_COUNT();
+call TOKENS_TOKEN_COUNT(100);
 ```
 
 Observe the difference in the query execution time and the execution time in the client.

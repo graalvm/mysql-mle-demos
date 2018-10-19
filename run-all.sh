@@ -17,15 +17,13 @@ if [ ! -f "$PWD/run-all.sh" ]; then
 fi
 ROOT_DIR=$PWD
 
-# Drop all
-echo "drop database if exists $DATABASE;" | $MYSQL
-echo "create database $DATABASE;" | $MYSQL
+# Seed all
+$MYSQL_DEMO < $ROOT_DIR/seed-data/all.sql
 
 # Demo 0
 $MYSQL_DEMO < $ROOT_DIR/0-demo-hello-js/hello-js.sql
 
 # Demo 1
-$MYSQL_DEMO < $ROOT_DIR/seed-data/emails.sql
 $MYSQL_DEMO < $ROOT_DIR/1-levenshtein-distance/levenshtein.sql
 $MYSQL_DEMO < $ROOT_DIR/1-levenshtein-distance/levenshtein_js.sql
 
@@ -36,9 +34,6 @@ $DBJS deploy -c "localhost/$DATABASE?port=3306" --database=mysql -u root --passw
 echo "select email from emails where validator_isemail(email) = 1;" | $MYSQL_DEMO
 
 # Demo 3
-$MYSQL_DEMO < $ROOT_DIR/seed-data/tweets.sql
-$MYSQL_DEMO < $ROOT_DIR/seed-data/tokens.sql
-
 cd $ROOT_DIR/3-string-tokenization/
 npm install
 $DBJS deploy -c "localhost/$DATABASE?port=3306" --database=mysql -u root --password=  --webpackConfig webpack.config.js tokens.js
