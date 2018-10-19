@@ -42,6 +42,11 @@ use demo;
 
 create table token_count(token varchar(255), count int);
 
+-- These emails and names are randomly genearated.
+-- If one of them one is real it is a pure coincidence.
+-- If someone abuses this email, they could of done so by
+-- using a simple random generator. Please don't blame
+-- this demo.
 create table emails(email varchar(256));
 insert into emails(email) values ("replication@lists.mysql.com");
 insert into emails(email) values ("cluster@lists.mysql.com");
