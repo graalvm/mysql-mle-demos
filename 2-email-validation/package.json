@@ -16,7 +16,13 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "validator": "^9.4.0",
-    "@types/validator": "^9.4.0"
+    "@types/node": "10.9.2",
+    "@types/validator": {
+      "integrity": "sha512-v6H2QH+oXVdLKp9keOJi5LQSt6X5/XIOtK1YmbCzvkAT2kHW9WyQkixit9w1UgJpBGrDCqqCZlQ+Qucpmsf8hA==",
+      "resolved": "https://registry.npmjs.org/@types/validator/-/validator-9.4.2.tgz",
+      "version": "9.4.2"
+    },
+    "ts-loader": "^5.2.2",
+    "validator": "^10.8.0"
   }
 }

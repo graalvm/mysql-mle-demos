@@ -10,17 +10,17 @@ npm install
 
 Then to execute the tokenization and frequency on the client execute:
 ```
-nodejs token_count.js
+nodejs tokens.js
 ```
 
 To deploy the same function to the database:
 ```
-dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --browserify-ignore-missing --password= --browserify-ignore-missing --browserify-ignore ./node_modules/cls-bluebird/lib/index.js --browserify-ignore ./node_modules/iconv-lite/lib/index.js token_count.js
+dbjs deploy  -c "localhost/demo?port=3306" --database=mysql -u root --password=  --webpackConfig webpack.config.js tokens.js
 ```
 
 In the client simply invoke:
 ```
-call TOKEN_FREQUENCY_TOKENFREQUENCY();
+call TOKENS_TOKEN_COUNT(100);
 ```
 
 Observe the difference in the query execution time and the execution time in the client.

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "strict": false,
+    "target": "es2017"
+  },
+  "files": [
+    "validator.ts"
+  ]
+}
