@@ -1,4 +1,7 @@
-#! /bin/sh -x -e
+#! /bin/sh
+set -e
+set -x 
+
 if [ "$#" -ne 2 ]; then
     echo "Required two parameters: (1) the MySQL client command and (2) the dbjs command.";
     exit 1
