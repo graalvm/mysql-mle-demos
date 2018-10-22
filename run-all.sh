@@ -21,7 +21,7 @@ fi
 ROOT_DIR=$PWD
 
 # Seed all
-$MYSQL_DEMO < $ROOT_DIR/seed-data/all.sql
+$MYSQL < $ROOT_DIR/seed-data/all.sql
 
 # Demo 0
 $MYSQL_DEMO < $ROOT_DIR/0-demo-hello-js/hello-js.sql
