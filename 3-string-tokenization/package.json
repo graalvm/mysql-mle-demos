@@ -16,9 +16,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "mysql": "git@github.com:vjovanov/mysql.git",
-    "mysql2": "git@github.com:vjovanov/node-mysql2.git",
-    "mle": "git@github.com:vjovanov/mle.git",
+    "mysql": "https://github.com/vjovanov/mysql.git",
+    "mysql2": "https://github.com/vjovanov/node-mysql2.git",
+    "mle": "https://github.com/vjovanov/mle.git",
     "natural": "0.5.6"
   },
   "devDependencies": {
