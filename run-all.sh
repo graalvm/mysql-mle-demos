@@ -1,6 +1,6 @@
 #! /bin/sh
 set -e
-set -x 
+set -x
 
 if [ "$#" -ne 2 ]; then
     echo "Required two parameters: (1) the MySQL client command and (2) the dbjs command.";
@@ -41,4 +41,5 @@ cd $ROOT_DIR/3-string-tokenization/
 npm install
 $DBJS deploy -c "localhost/$DATABASE?port=3306" --database=mysql -u root --password=  --webpackConfig webpack.config.js tokens.js
 echo "call tokens_token_count(100);" | $MYSQL_DEMO
+echo "select * from token_count" | $MYSQL_DEMO
 

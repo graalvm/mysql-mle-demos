@@ -26,8 +26,8 @@ mysql> select email, levenshtein_js("announce@lists.mysql.com", email) as distan
 | email                       | distance |
 +-----------------------------+----------+
 | cluster@lists.mysql.com     |        7 |
+| backup@lists.mysql.com      |        7 |
 | replication@lists.mysql.com |       11 |
-| Antone_Koss@gmail.com       |       12 |
 +-----------------------------+----------+
 3 rows in set (1.98 sec)
 ```
