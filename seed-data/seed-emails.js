@@ -38,60 +38,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+var faker = require('faker');
 
-const mysql = require('mysql2');
-const tokenize = require('natural/lib/natural/tokenizers/regexp_tokenizer');
-const mle = require('mle');
+function seedEmails(emails, correctEmails, wrongEmails) {
+  for (var i = 0; i < wrongEmails; ++i) {
+    emails.push(faker.fake("{{name.lastName}}.{{name.firstName}}"));
+  }
 
-function tokenCount(limit) {
-  const connection = getConnection();
-  connection.connect();
-
-  console.log("Fetching tweets...");
-  var tokenizer = new tokenize.WordTokenizer();
-  var query = connection.query('SELECT text from tweets;', function (err, res, flds) {
-    if (err) throw err;
-    console.log("Counting tokens...");
-    var count = wordCount(res.map(r => tokenizer.tokenize(r.text)));
-    var orderedCount = orderKeys(count);
-
-    console.log("Inserting...");
-    orderedCount.slice(0, limit).forEach(function(token) {
-      connection.query('INSERT into token_count SET ?', token);
-    });
-
-    console.log("Done.");
-    connection.end();
-  });
+  for (var i = 0; i < correctEmails; ++i) {
+    emails.push(faker.internet.email());
+  }
+  console.log('create table emails(email varchar(256));');
+  for (var email of emails) {
+    console.log('insert into emails(email) values ("' + email + '");');
+  }
 }
 
-function wordCount(xs) {
-  var rv = new Object();
-  xs.forEach(function(tokens) {
-  	tokens.forEach(function(token) {
-      if (token in rv) rv[token] += 1;
-      else rv[token] = 1;
-    });
-  });
-  return rv;
-}
+var program = require('commander');
+program
+  .version('0.1.0')
+  .usage('[options]')
+  .option('-e, --emails <n>', 'Number of real emails', 4000)
+  .option('-f, --fake-emails <n>', 'Number of fake emails', 1000)
+  .parse(process.argv);
 
-function orderKeys(object) {
-  return Object.keys(object)
-    .sort((a, b) => object[b] - object[a])
-    .map(key => ({token: key, count: object[key]}));
-}
+/* Emails for the demo. */
+var emails = [];
+emails.push('replication@lists.mysql.com')
+emails.push('cluster@lists.mysql.com')
+emails.push('backup@lists.mysql.com')
+emails = emails.slice(0, program.emails)
 
-function getConnection() {
-  return mysql.createConnection({
-     host     : 'localhost',
-     user     : 'root',
-     password : '',
-     database : 'demo'
-  });
-}
-
-if (!mle.enabled()) {
-  tokenCount(100);
-}
-module.exports.token_count = tokenCount;
+seedEmails(emails, Math.max(0, (program.emails - emails.length)), program.fakeEmails);

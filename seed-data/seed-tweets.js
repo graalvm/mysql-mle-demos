@@ -38,60 +38,65 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+var program = require('commander');
+var Twitter = require('twitter-node-client').Twitter;
+var oldLog = console.log
+var escapeString = function (str) {
+  return str.replace(/[\0\n\r\b\t\\'"\x1a]/g, function (s) {
+    switch (s) {
+      case "\0":
+        return "\\0";
+      case "\n":
+        return "\\n";
+      case "\r":
+        return "\\r";
+      case "\b":
+        return "\\b";
+      case "\t":
+        return "\\t";
+      case "\x1a":
+        return "\\Z";
+      case "'":
+        return "''";
+      case '"':
+        return '""';
+      default:
+        return "\\" + s;
+    }
+  });
+};
 
-const mysql = require('mysql2');
-const tokenize = require('natural/lib/natural/tokenizers/regexp_tokenizer');
-const mle = require('mle');
+var error = function (err, response, body) {
+  console.log('ERROR [%s]', err);
+};
+var success = function (data) {
+  statuses = JSON.parse(data).statuses
+  for (var status in statuses) {
+      oldLog('insert into tweets values("%s");', escapeString(statuses[status].text));
+  }
 
-function tokenCount(limit) {
-  const connection = getConnection();
-  connection.connect();
+};
 
-  console.log("Fetching tweets...");
-  var tokenizer = new tokenize.WordTokenizer();
-  var query = connection.query('SELECT text from tweets;', function (err, res, flds) {
-    if (err) throw err;
-    console.log("Counting tokens...");
-    var count = wordCount(res.map(r => tokenizer.tokenize(r.text)));
-    var orderedCount = orderKeys(count);
+program
+  .version('0.1.0')
+  .arguments('<consumerKey> <consumerSecret> <accessToken> <accessTokenSecret>')
+  .usage('[options] <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret>\n\n' +
+    'You can find <consumerKey> <consumerSecret> <accessToken> <accessTokenSecret> in the Twitter Apps dashboard. \n\n' +
+    'Note that there is a rate limit: \n' +
+    '  https://developer.twitter.com/en/docs/basics/rate-limits')
+  .option('-ht, --hash-tag <n>', 'Hash tag to search', 'haiku')
+  .option('-n, --number-of-tweets <n>', 'Number of fake emails', 1000)
+  .action(function (consumerKey, consumerSecret, accessToken, accessTokenSecret, cmd) {
 
-    console.log("Inserting...");
-    orderedCount.slice(0, limit).forEach(function(token) {
-      connection.query('INSERT into token_count SET ?', token);
+    var twitter = new Twitter({
+      "consumerKey": consumerKey,
+      "consumerSecret": consumerSecret,
+      "accessToken": accessToken,
+      "accessTokenSecret": accessTokenSecret
     });
+    oldLog("create table tweets (text varchar(255) DEFAULT NULL);");
+    oldLog('create table token_count(token varchar(255), count int);')
+    console.log = function() {}
+    twitter.getSearch({'q': '#' + cmd.hashTag, 'count': cmd.numberOfTweets}, error, success);
 
-    console.log("Done.");
-    connection.end();
-  });
-}
-
-function wordCount(xs) {
-  var rv = new Object();
-  xs.forEach(function(tokens) {
-  	tokens.forEach(function(token) {
-      if (token in rv) rv[token] += 1;
-      else rv[token] = 1;
-    });
-  });
-  return rv;
-}
-
-function orderKeys(object) {
-  return Object.keys(object)
-    .sort((a, b) => object[b] - object[a])
-    .map(key => ({token: key, count: object[key]}));
-}
-
-function getConnection() {
-  return mysql.createConnection({
-     host     : 'localhost',
-     user     : 'root',
-     password : '',
-     database : 'demo'
-  });
-}
-
-if (!mle.enabled()) {
-  tokenCount(100);
-}
-module.exports.token_count = tokenCount;
+  }).parse(process.argv);

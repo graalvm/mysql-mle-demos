@@ -16,9 +16,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "mysql": "https://github.com/vjovanov/mysql.git",
-    "mysql2": "https://github.com/vjovanov/node-mysql2.git",
-    "mle": "https://github.com/vjovanov/mle.git",
+    "mysql": "https://github.com/vjovanov/mysql/tarball/master",
+    "mysql2": "https://github.com/vjovanov/node-mysql2/tarball/master",
+    "mle": "https://github.com/vjovanov/mle/tarball/master",
     "natural": "0.5.6"
   },
   "devDependencies": {

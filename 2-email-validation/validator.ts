@@ -39,7 +39,7 @@
  * SOFTWARE.
  */
 
-"use strict"
+"use strict";
 import * as validator from "validator";
 
 function isEmailTyped(input: string): boolean {
