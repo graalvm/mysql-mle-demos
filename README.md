@@ -1,6 +1,6 @@
 # Demos for the MySQL Multi-Lingual Environment
 
-Individual demos are in individual folders of this repo.
+Demos are self-contained in subdirectories, each having a `README.md` file with the instructions.
 
 ## Setup
 
