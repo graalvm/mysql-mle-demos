@@ -17,7 +17,6 @@ module.exports = {
         "_stream_readable": require.resolve('readable-stream/readable.js'),
         "_stream_transform": require.resolve('readable-stream/transform.js'),
         "_stream_writable": require.resolve('readable-stream/writable.js'),
-        "buffer": require.resolve('buffer/'),
       },
     },
     node: {
