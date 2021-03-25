@@ -1,5 +1,3 @@
-# Demos for the MySQL Multi-Lingual Environment
+# Demos for MySQL Multi-Lingual Environment
 
-Demos are self-contained in subdirectories, each having a `README.md` file with the instructions.
-
-The develpment of this project has been paused. The restart date and the date of release is optional and currently unknown.
+This repository contained demos for the MySQL Multi-Lingual Environment. The MySQL Multi-Lingual Environment project has been paused (with uncertain restart date) so we have removed all the demos from the repo. 
